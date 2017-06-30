@@ -36,7 +36,19 @@ router.get('/', (req, res) => {
     } else {
       res.render('user/users', {users});
     }
-  });
+  }).sort({_id:-1});
+});
+
+// GET: single user
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.render('user/details', {user});
+    }
+
+  })
 });
 
 module.exports = router;
