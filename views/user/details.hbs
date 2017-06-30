@@ -7,6 +7,13 @@
   <hr>
 
   <a href="/users/edit/{{user._id}}">edit</a>
-   <a href="">delete</a>
+   <a href="/users/delete/{{user._id}}">delete</a>
+
+
+{{!--<form action="/users/{{user._id}}" method="post">
+  <input name="_method" type="hidden" value="delete" />
+  <button type="submit">delete</button>
+</form>--}}
+
 </div>
 

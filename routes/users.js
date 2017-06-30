@@ -18,65 +18,23 @@ router.post("/register", (req, res) => {
     password
   });
 
-
-  // if user exist dont add them
-  User.findOne({email:req.body.email}, (err, existingUser) => {
+  // if user email exist dont add them
+  User.findOne({email}, (err, existingUser) => {
     if (existingUser === null) {
-      console.log ('no user with that email exists')
       // if no user with that email exists, save user
       newUser.save(err => {
         if (err) {
           throw new Error('There was a problem saving data', err);
         } else {
-          console.log("success, data saved");
-          res.redirect("/users/register");
+          console.log('success, data saved');
+          res.redirect('/users/register');
         }
       });
     } else {
-      console.log('use already exists');
-      res.json({message: 'use already exists'} );
+      res.json({message: 'Sorry, that email already exists'} );
     }
   });
-
-
-
-
-
-
-  // newUser.save(err => {
-  //   if (err) {
-  //     throw new Error('There was a problem saving data', err);
-  //   } else {
-  //     console.log("success, data saved");
-  //     res.redirect("/users/register");
-  //   }
-  // });
 });
-
-
-
-
-
-// POST: post request for register form
-// router.post("/register", (req, res) => {
-//   const { firstName, lastName, email, password } = req.body;
-
-//   const newUser = new User({
-//     firstName,
-//     lastName,
-//     email,
-//     password
-//   });
-
-//   newUser.save(err => {
-//     if (err) {
-//       throw new Error('There was a problem saving data', err);
-//     } else {
-//       console.log("success, data saved");
-//       res.redirect("/users/register");
-//     }
-//   });
-// });
 
 // GET: get all users
 router.get('/', (req, res) => {
@@ -132,6 +90,21 @@ router.post("/edit/:id", (req, res) => {
       throw new Error('There was a problem saving data', err);
     } else {
       console.log("success, data updated");
+      res.redirect("/users/");
+    }
+  });
+});
+
+//******************************************************** 
+// Delete
+//********************************************************
+
+router.get('/delete/:id', (req, res) => {
+  User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // res.json(user)
       res.redirect("/users/");
     }
   });
