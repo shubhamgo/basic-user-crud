@@ -6,14 +6,8 @@
   password: {{user.password}} <br>
   <hr>
 
-  <a href="/users/edit/{{user._id}}">edit</a>
-   <a href="/users/delete/{{user._id}}">delete</a>
-
-
-{{!--<form action="/users/{{user._id}}" method="post">
-  <input name="_method" type="hidden" value="delete" />
-  <button type="submit">delete</button>
-</form>--}}
+  <a class="button" href="/users/edit/{{user._id}}">edit</a>
+  <a class="button user-delete" data-id={{user._id}} href="">delete</a>
 
 </div>
 

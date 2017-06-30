@@ -99,15 +99,23 @@ router.post("/edit/:id", (req, res) => {
 // Delete
 //********************************************************
 
-router.get('/delete/:id', (req, res) => {
-  User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // res.json(user)
-      res.redirect("/users/");
-    }
+
+// DELETE: Article by id (done with jquery, is this really neccessary)
+// used so that confirm button can be used to confirm action
+router.delete("/:id", (req, res) => {
+
+  const query = { _id: req.params.id };
+
+  User.findById(req.params.id, err => {
+    User.remove(query, err => {
+      if (err) {
+        console.log(err);
+      }
+      res.send("Success");
+    });
   });
 });
+
+
 
 module.exports = router;
