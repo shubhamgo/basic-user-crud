@@ -1,0 +1,13 @@
+<h1>All Users</h1>
+
+<ul>
+  {{#each users}}
+
+  <li>
+    {{this.firstName}}  {{this.lastName}}<br>
+    email: {{this.email}}<br>
+    plain-test password: {{this.password}}<br>
+  </li><br>
+
+  {{/each}}
+</ul>
