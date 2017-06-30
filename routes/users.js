@@ -7,7 +7,7 @@ router.get("/register", (req, res) => {
   res.render("user/register");
 });
 
-// POST: post request for register form
+// NEW. Check if user email exists
 router.post("/register", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -18,15 +18,65 @@ router.post("/register", (req, res) => {
     password
   });
 
-  newUser.save(err => {
-    if (err) {
-      throw new Error('There was a problem saving data', err);
+
+  // if user exist dont add them
+  User.findOne({email:req.body.email}, (err, existingUser) => {
+    if (existingUser === null) {
+      console.log ('no user with that email exists')
+      // if no user with that email exists, save user
+      newUser.save(err => {
+        if (err) {
+          throw new Error('There was a problem saving data', err);
+        } else {
+          console.log("success, data saved");
+          res.redirect("/users/register");
+        }
+      });
     } else {
-      console.log("success, data saved");
-      res.redirect("/users/register");
+      console.log('use already exists');
+      res.json({message: 'use already exists'} );
     }
   });
+
+
+
+
+
+
+  // newUser.save(err => {
+  //   if (err) {
+  //     throw new Error('There was a problem saving data', err);
+  //   } else {
+  //     console.log("success, data saved");
+  //     res.redirect("/users/register");
+  //   }
+  // });
 });
+
+
+
+
+
+// POST: post request for register form
+// router.post("/register", (req, res) => {
+//   const { firstName, lastName, email, password } = req.body;
+
+//   const newUser = new User({
+//     firstName,
+//     lastName,
+//     email,
+//     password
+//   });
+
+//   newUser.save(err => {
+//     if (err) {
+//       throw new Error('There was a problem saving data', err);
+//     } else {
+//       console.log("success, data saved");
+//       res.redirect("/users/register");
+//     }
+//   });
+// });
 
 // GET: get all users
 router.get('/', (req, res) => {
@@ -68,12 +118,12 @@ router.get('/edit/:id', (req, res) => {
 // UPDATE (part 2): on submit, post form to db
 router.post("/edit/:id", (req, res) => {
   let user = {};
-  // const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
-  user.firstName = req.body.firstName;
-  user.lastName = req.body.lastName;
-  user.email = req.body.email;
-  user.password = req.body.password;
+  user.firstName = firstName;
+  user.lastName = lastName;
+  user.email = email;
+  user.password = password;
   
   let query = {_id: req.params.id}
 
