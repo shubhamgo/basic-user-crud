@@ -47,8 +47,44 @@ router.get('/:id', (req, res) => {
     } else {
       res.render('user/details', {user});
     }
+  });
+});
 
-  })
+//******************************************************** 
+// START UPDATE
+//********************************************************
+
+// UPDATE (part 1): get the user form and prepopulate with values
+router.get('/edit/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.render('user/edit', {user});
+    }
+  });
+});
+
+// UPDATE (part 2): on submit, post form to db
+router.post("/edit/:id", (req, res) => {
+  let user = {};
+  // const { firstName, lastName, email, password } = req.body;
+
+  user.firstName = req.body.firstName;
+  user.lastName = req.body.lastName;
+  user.email = req.body.email;
+  user.password = req.body.password;
+  
+  let query = {_id: req.params.id}
+
+  User.update(query, user, (err) => {
+    if (err) {
+      throw new Error('There was a problem saving data', err);
+    } else {
+      console.log("success, data updated");
+      res.redirect("/users/");
+    }
+  });
 });
 
 module.exports = router;
