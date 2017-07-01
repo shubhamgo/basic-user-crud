@@ -14,7 +14,7 @@
     if (confirmedDelete) {
       axios.delete(`/users/${id}`)
         .then((response) => {
-          window.location.href = '/';
+          window.location.href = '/users';
         })
         .catch((err) => {
           console.log(err);
