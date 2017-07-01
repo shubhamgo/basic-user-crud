@@ -15,7 +15,6 @@ const users = require('./routes/users');
 // connect to db
 mongoose.Promise = global.Promise;
 mongoose.connect(configDB.database);
-// mongoose.createConnection(config.database, { useMongoClient: true })
 const db = mongoose.connection;
 // Check for connection and db errors
 db.once('open', () => {
