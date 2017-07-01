@@ -107,7 +107,8 @@ router.post('/edit/:id', (req, res) => {
       throw new Error('There was a problem saving data', err);
     } else {
       console.log('success, data updated');
-      res.redirect('/users/');
+      console.log(user);
+      res.redirect(`/users/${req.params.id}`);
     }
   });
 });
