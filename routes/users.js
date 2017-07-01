@@ -31,14 +31,15 @@ router.post('/register', (req, res) => {
       // if no user with that email exists, save user
       newUser.save((err) => {
         if (err) {
-          throw new Error('There was a problem saving data', err);
+          console.log(err);
         } else {
-          console.log('success, data saved');
+          console.log('Data saved to mongo');
           res.redirect('/users/register');
         }
       });
     } else {
-      res.json({ message: 'Sorry, that email already exists' });
+      res.send('<h1>Sorry, that email already exists</h1>');
+      // res.json({ message: 'Sorry, that email already exists' });
     }
   });
 });

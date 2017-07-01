@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <header>
-      <h1 class="text-center">User CRUD</h1>
-      <ul class="nav text-center">
-        <li><a href="/users">all users</a></li>
-        <li><a href="/users/register">register</a></li>
-      </ul>
-      <hr>
-    </header>
-    {{{body}}}
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-  <script src="/javascripts/main.js"></script>
-  </body>
+
+<head>
+  <title>{{title}}</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+
+  <header>
+    <h1 class="text-center">Basic User CRUD</h1>
+    <p class="text-center">The most minimal user CRUD system possible to learn the basic.</p>
+    <ul class="nav text-center">
+      <li><a href="/">home</a></li>
+      <li><a href="/users">all users</a></li>
+      <li><a href="/users/register">register</a></li>
+    </ul>
+    <hr>
+  </header>
+
+  {{{body}}}
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+  <script src="/javascripts/main.js"></script>  
+</body>
+
 </html>
