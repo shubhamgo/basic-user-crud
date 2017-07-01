@@ -3,6 +3,7 @@
 /* eslint no-alert: 0*/
 /* eslint-env browser, jquery */
 
+// may not work in ie without polyfill
 ((axios) => {
   const deleteButton = document.querySelector('a.button.user-delete');
 
