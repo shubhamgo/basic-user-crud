@@ -27,6 +27,7 @@
   }
 })(axios);
 
+
 // jquery version
 // $(document).ready(() => {
 //   $('a.button.user-delete').on('click', (e) => {
