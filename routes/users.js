@@ -89,7 +89,7 @@ router.get('/edit/:id', (req, res) => {
   });
 });
 
-// POST: on form submit, post form to db
+// POST/UPDATE: on form submit, post form to db
 router.post('/edit/:id', (req, res) => {
   const user = {};
   const { firstName, lastName, email, password } = req.body;
