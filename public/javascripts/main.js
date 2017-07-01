@@ -1,3 +1,9 @@
+/* global $target */
+/* eslint no-global-assign: 0*/
+/* eslint no-alert: 0*/
+/* eslint-env browser, jquery */
+
+
 $(document).ready(() => {
   $('a.button.user-delete').on('click', (e) => {
     $target = $(e.target);
@@ -16,6 +22,5 @@ $(document).ready(() => {
         },
       });
     }
-
   });
 });

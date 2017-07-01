@@ -1,13 +1,11 @@
 <h2>User Details</h2>
 
 <div>
-  {{user.firstName}} {{user.lastName}} <br>
-  {{user.email}} <br>
+  {{user.firstName}} {{user.lastName}} <br> 
+  {{user.email}} <br> 
   password: {{user.password}} <br><br>
 
- <br>
   <a class="button" href="/users/edit/{{user._id}}">edit</a>
   <a class="button user-delete" data-id={{user._id}} href="">delete</a>
 
 </div>
-

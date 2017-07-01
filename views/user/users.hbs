@@ -1,14 +1,18 @@
 <h2>All Users</h2>
 
 <ul>
-  {{#each users}}
+  {{#if users}}
+    {{#each users}}
+      <li>
+        {{this.firstName}} {{this.lastName}}<br> 
+        {{this.email}}<br> 
+        password: {{this.password}}<br><br>
 
-  <li>
-    {{this.firstName}}  {{this.lastName}}<br>
-    {{this.email}}<br>
-    plain-text password: {{this.password}}<br><br>
-    <a class="button" href="/users/{{this._id}}">details</a>
-  </li><br>
-
-  {{/each}}
+        <a class="button" href="/users/{{this._id}}">details</a>
+      </li>
+    {{/each}}
+  {{else}}
+  <p>Please add some users.</p>
+  {{/if}}
+  
 </ul>

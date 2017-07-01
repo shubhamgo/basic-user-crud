@@ -23,11 +23,15 @@ ul{
 
 li{
  list-style: none;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 ul.nav li{
  display: inline-block;
- padding: 0 5px 30px;
+  border-bottom: 0px;
+ padding: 0 5px 20px;
 }
 
 ul.nav li a{
