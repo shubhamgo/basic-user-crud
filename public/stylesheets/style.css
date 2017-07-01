@@ -35,10 +35,19 @@ ul.nav li a{
   padding: 5px 10px;
  color: #fff;
  border-radius: 5px;
+ font-size: 12px;
 }
 
 ul.nav li a:hover{
  background: #0275d8;
+}
+
+hr {
+  border: solid #DDDDDD;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+  margin: 40px 0;
 }
 
 a.button, .button{
@@ -56,6 +65,7 @@ a.button, .button{
   border: 1px solid transparent;
   padding: .5rem 1rem;
   border-radius: .25rem;
+  font-size: 12px;
 }
 
 a.button.user-delete{
